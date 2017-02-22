@@ -17,6 +17,10 @@ class Api:
 	def name(self):
 		return self._bot_configuration.name
 
+	@property
+	def verify_token(self):
+		return self._bot_configuration.verify_token
+
 	def get_user_profile(self, user_id):
 		return self._request_sender.get_user_profile(user_id)
 
