@@ -2,7 +2,7 @@ import json
 import logging
 
 from .consts import MESSENGER_BOT_API_URL, MESSENGER_BOT_USER_AGENT
-from messengerbot.api.viber_requests import create_request
+from messengerbot.api.messenger_requests import create_request
 from messengerbot.api.api_request_sender import ApiRequestSender
 from messengerbot.api.message_sender import MessageSender
 
