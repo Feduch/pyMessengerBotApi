@@ -25,7 +25,7 @@ class Api:
 		return self._request_sender.get_user_profile(user_id)
 
 	def parse_request(self, request_data):
-		self._logger.debug("parsing request")
+		self._logger.debug(u"parsing request={0}".format(request_data))
 		request_dict = json.loads(request_data)
 		request = create_request(request_dict)
 		self._logger.debug(u"parsed request={0}".format(request))
