@@ -2,25 +2,15 @@ from messengerbot.api.event_type import EventType
 from messengerbot.api.messenger_requests.messenger_request import MessengerRequest
 
 
-class MessengerStartRequest(MessengerRequest):
+class MessengerPostbackRequest(MessengerRequest):
     def __init__(self):
-        super(MessengerStartRequest, self).__init__(EventType.START)
-        self._ref = None
-        self._type = None
-        self._source = None
+        super(MessengerPostbackRequest, self).__init__(EventType.POSTBACK)
         self._payload = None
 
     def from_dict(self, request_dict):
-        super(MessengerStartRequest, self).from_dict(request_dict)
-        self._ref = request_dict['postback']['referral']['ref']
-        self._type = request_dict['postback']['referral']['type']
-        self._source = request_dict['postback']['referral']['source']
+        super(MessengerPostbackRequest, self).from_dict(request_dict)
         self._payload = request_dict['postback']['payload']
         return self
-
-    @property
-    def ref(self):
-        return self._ref
 
     @property
     def payload(self):

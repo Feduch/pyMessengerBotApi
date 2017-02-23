@@ -1,24 +1,33 @@
 from messengerbot.api.event_type import EventType
-from messengerbot.api.messenger_requests.messenger_start_request import MessengerStartRequest
-
-
-
-EVENT_TYPE_TO_CLASS = {
-	# EventType.MESSAGE: MessengerMessageRequest,
-	EventType.START: MessengerStartRequest,
-}
+from messengerbot.api.messenger_requests.messenger_request import MessengerStartRequest
+from messengerbot.api.messenger_requests.messenger_request import MessengerPostbackRequest
+from messengerbot.api.messenger_requests.messenger_request import MessengerReferralRequest
+from messengerbot.api.messenger_requests.messenger_request import MessengerQuickReplyRequest
+from messengerbot.api.messenger_requests.messenger_request import MessengerTextRequest
 
 
 def create_request(request_dict):
-	if 'event' not in request_dict:
-		raise Exception("request is missing field 'event'")
-
-	if request_dict['event'] not in EVENT_TYPE_TO_CLASS:
-		raise Exception("event type '{0}' is not supported".format(request_dict['event']))
-
-	return EVENT_TYPE_TO_CLASS[request_dict['event']]().from_dict(request_dict)
-
-
-__all__ = ['MessengerStartRequest', 'MessengerMessageRequest']
-
-
+    for event in request_dict['entry']:
+        messaging = event['messaging']
+        for data in messaging:
+            if data.get('postback'):
+                if data['postback'].get('referral'):
+                    MessengerStartRequest().from_dict(data)
+                else:
+                    MessengerPostbackRequest().from_dict(data)
+            if data.get('referral'):
+                MessengerReferralRequest().from_dict(data)
+            if data.get('message'):
+                if data['message'].get('quick_reply'):
+                    MessengerQuickReplyRequest().from_dict(data)
+                elif data['message'].get('attachments'):
+                    attachments = data['message'].get('attachments')
+                    for attachment in attachments:
+                        if attachment['type']=='location':
+                            # TODO: Данные о своем местонахождении
+                            pass
+                        else:
+                            # TODO: Обработка файлов
+                            pass
+                else:
+                    MessengerTextRequest().from_dict(data)
