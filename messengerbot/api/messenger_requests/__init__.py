@@ -1,9 +1,9 @@
 from messengerbot.api.event_type import EventType
-from messengerbot.api.messenger_requests.messenger_request import MessengerStartRequest
-from messengerbot.api.messenger_requests.messenger_request import MessengerPostbackRequest
-from messengerbot.api.messenger_requests.messenger_request import MessengerReferralRequest
-from messengerbot.api.messenger_requests.messenger_request import MessengerQuickReplyRequest
-from messengerbot.api.messenger_requests.messenger_request import MessengerTextRequest
+from messengerbot.api.messenger_requests.messenger_start_request import MessengerStartRequest
+from messengerbot.api.messenger_requests.messenger_postback_request import MessengerPostbackRequest
+from messengerbot.api.messenger_requests.messenger_referral_request import MessengerReferralRequest
+from messengerbot.api.messenger_requests.messenger_quick_reply_request import MessengerQuickReplyRequest
+from messengerbot.api.messenger_requests.messenger_text_request import MessengerTextRequest
 
 
 def create_request(request_dict):
