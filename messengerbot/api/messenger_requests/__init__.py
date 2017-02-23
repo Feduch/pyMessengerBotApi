@@ -1,4 +1,3 @@
-from messengerbot.api.event_type import EventType
 from messengerbot.api.messenger_requests.messenger_start_request import MessengerStartRequest
 from messengerbot.api.messenger_requests.messenger_postback_request import MessengerPostbackRequest
 from messengerbot.api.messenger_requests.messenger_referral_request import MessengerReferralRequest
@@ -12,14 +11,14 @@ def create_request(request_dict):
         for data in messaging:
             if data.get('postback'):
                 if data['postback'].get('referral'):
-                    MessengerStartRequest().from_dict(data)
+                    return MessengerStartRequest().from_dict(data)
                 else:
-                    MessengerPostbackRequest().from_dict(data)
+                    return MessengerPostbackRequest().from_dict(data)
             if data.get('referral'):
-                MessengerReferralRequest().from_dict(data)
+                return MessengerReferralRequest().from_dict(data)
             if data.get('message'):
                 if data['message'].get('quick_reply'):
-                    MessengerQuickReplyRequest().from_dict(data)
+                    return MessengerQuickReplyRequest().from_dict(data)
                 elif data['message'].get('attachments'):
                     attachments = data['message'].get('attachments')
                     for attachment in attachments:
@@ -30,4 +29,4 @@ def create_request(request_dict):
                             # TODO: Обработка файлов
                             pass
                 else:
-                    MessengerTextRequest().from_dict(data)
+                    return MessengerTextRequest().from_dict(data)
