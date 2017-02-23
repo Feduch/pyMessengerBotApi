@@ -56,7 +56,7 @@ class ApiRequestSender:
             endpoint=user_id,
             params=params)
 
-        if not result['error'] == 0:
+        if 'error' in result:
             raise Exception(u"failed with status: {0}, message: {1}"
                             .format(result['error']['code'], result['error']['message']))
 
