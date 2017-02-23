@@ -1,7 +1,8 @@
 import requests
-from requests import RequestException
 import traceback
 import json
+
+from requests import RequestException
 
 
 class ApiRequestSender:
@@ -29,14 +30,14 @@ class ApiRequestSender:
                                    .format(traceback.format_exc()))
             raise ex
 
-    def get_request(self, endpoint, payload):
+    def get_request(self, endpoint, params):
         try:
-            response = requests.get(self._messenger_bot_api_url + '/' + endpoint, data=payload)
+            response = requests.get(self._messenger_bot_api_url + '/' + endpoint, params=params)
             response.raise_for_status()
             return json.loads(response.text)
         except RequestException as e:
             self._logger.error(u"failed to post request to endpoint={0}, with payload={1}. error is: {2}"
-                               .format(endpoint, payload, traceback.format_exc()))
+                               .format(endpoint, params, traceback.format_exc()))
             raise e
         except Exception as ex:
             self._logger.error(u"unexpected Exception while trying to post request. error is: {0}"
@@ -47,13 +48,13 @@ class ApiRequestSender:
         if user_id is None:
             raise Exception("missing parameter id")
 
-        payload = {
+        params = {
             'access_token': self._bot_configuration.access_token,
             'fields': 'first_name,last_name,profile_pic,locale,timezone,gender'
         }
         result = self.get_request(
             endpoint=user_id,
-            payload=json.dumps(payload))
+            params=params)
 
         if not result['error'] == 0:
             raise Exception(u"failed with status: {0}, message: {1}"
