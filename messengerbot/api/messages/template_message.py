@@ -8,7 +8,7 @@ class TemplateMessage(Message):
         self._elements = elements
         self._type = 'template'
         self._template_type = 'button'
-        if elements is not None:
+        if isinstance(elements, list):
             self._template_type = 'generic'
 
     def to_dict(self):
