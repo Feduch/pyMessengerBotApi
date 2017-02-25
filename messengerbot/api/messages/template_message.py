@@ -12,18 +12,21 @@ class TemplateMessage(Message):
             self._template_type = 'generic'
 
     def to_dict(self):
-        message_data = super(TemplateMessage, self).to_dict()
-        message_data['attachment'] = {}
-        message_data['attachment']['payload'] = {}
-        message_data['attachment']['type'] = self._type
-        message_data['attachment']['payload']['template_type'] = self._template_type
-        if self._template_type=="button":
-            message_data['attachment']['payload']['text'] = self._text
-            message_data['attachment']['payload']['buttons'] = self._buttons
-        if self._template_type == "generic":
-            message_data['attachment']['payload']['elements'] = []
-            message_data['attachment']['payload']['elements'] = self._elements
-            message_data['attachment']['payload']['elements']['buttons'] = self._buttons
+        try:
+            message_data = super(TemplateMessage, self).to_dict()
+            message_data['attachment'] = {}
+            message_data['attachment']['payload'] = {}
+            message_data['attachment']['type'] = self._type
+            message_data['attachment']['payload']['template_type'] = self._template_type
+            if self._template_type=="button":
+                message_data['attachment']['payload']['text'] = self._text
+                message_data['attachment']['payload']['buttons'] = self._buttons
+            if self._template_type == "generic":
+                message_data['attachment']['payload']['elements'] = []
+                message_data['attachment']['payload']['elements'] = self._elements
+                message_data['attachment']['payload']['elements']['buttons'] = self._buttons
+        except Exception as e:
+            print('to_dict -----------> %s' % e)
         return message_data
 
     def from_dict(self, message_data):
