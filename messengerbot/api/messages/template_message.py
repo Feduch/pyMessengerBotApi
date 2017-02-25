@@ -13,6 +13,8 @@ class TemplateMessage(Message):
 
     def to_dict(self):
         message_data = super(TemplateMessage, self).to_dict()
+        message_data['attachment'] = {}
+        message_data['attachment']['payload'] = {}
         message_data['attachment']['type'] = self._type
         message_data['attachment']['payload']['template_type'] = self._template_type
         if self._template_type=="button":
