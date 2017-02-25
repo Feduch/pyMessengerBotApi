@@ -7,6 +7,8 @@ class MessengerRequest:
         self._timestamp = None
 
     def from_dict(self, request_dict):
+        self._logger.debug(u"parsing request sender id={0}".format(request_dict['sender']['id']))
+        self._logger.debug(u"parsing request sender id type={0}".format(type(request_dict['sender']['id'])))
         self._sender_id = request_dict['sender']['id']
         self._recipient_id = request_dict['recipient']['id']
         self._timestamp = request_dict['timestamp']
