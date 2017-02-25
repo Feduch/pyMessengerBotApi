@@ -2,7 +2,7 @@ from messengerbot.api.messages.message_type import MessageType
 from messengerbot.api.messages.text_message import TextMessage
 from messengerbot.api.messages.file_message import FileMessage
 from messengerbot.api.messages.quick_replies_message import QuikRepliesMessage
-from messengerbot.api.messages.template import TemplateMessage
+from messengerbot.api.messages.template_message import TemplateMessage
 
 MESSAGE_TYPE_TO_CLASS = {
     MessageType.TEXT: TextMessage,
