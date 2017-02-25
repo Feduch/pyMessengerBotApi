@@ -8,7 +8,6 @@ class Message:
     @abstractmethod
     def to_dict(self):
         message_data = {}
-        message_data['message'] = {}
         return message_data
 
     @abstractmethod

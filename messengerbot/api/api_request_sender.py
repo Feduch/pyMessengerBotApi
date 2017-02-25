@@ -15,7 +15,7 @@ class ApiRequestSender:
     def post_request(self, endpoint, payload):
         try:
             params = {
-                "access_token": self._bot_configuration.auth_token
+                "access_token": self._bot_configuration.access_token
             }
             headers = {
                 "Content-Type": "application/json",
