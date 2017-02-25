@@ -39,7 +39,6 @@ class Api:
         :param message_text: text
         :return: list of tokens of the sent messages
         """
-        self._logger.debug("going to send message text: {0}, recipient_id: {1}".format(message, recipient_id))
         sent_messages_tokens = []
 
         token = self._message_sender.send_message(recipient_id, message)
