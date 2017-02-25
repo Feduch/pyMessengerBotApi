@@ -8,13 +8,13 @@ class TextMessage(Message):
 
     def to_dict(self):
         message_data = super(TextMessage, self).to_dict()
-        message_data['message']['text'] = self._text
+        message_data['text'] = self._text
         return message_data
 
     def from_dict(self, message_data):
         super(TextMessage, self).from_dict(message_data)
-        if 'text' in message_data['message']:
-            self._text = message_data['message']['text']
+        if 'text' in message_data:
+            self._text = message_data['text']
         return self
 
     def validate(self):

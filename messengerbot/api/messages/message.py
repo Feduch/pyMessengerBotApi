@@ -2,25 +2,18 @@ from abc import abstractmethod
 
 
 class Message:
-    def __init__(self, recipient_id):
-        self._recipient_id = recipient_id
+    def __init__(self):
+        pass
 
     @abstractmethod
     def to_dict(self):
         message_data = {}
-        if self._recipient_id:
-            message_data['recipient']['id'] = self._recipient_id
+        message_data['message'] = {}
         return message_data
 
     @abstractmethod
     def from_dict(self, message_data):
-        if 'recipient' in message_data:
-            self._recipient_id = message_data['recipient']['id']
         return self
-
-    @property
-    def recipient_id(self):
-        return self._recipient_id
 
     @abstractmethod
     def validate(self):

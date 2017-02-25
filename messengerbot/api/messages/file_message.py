@@ -1,18 +1,19 @@
 from messengerbot.api.messages.message import Message
 
 
-class QuikRepliesMessage(Message):
-    def __init__(self, recipient_id, text=None):
-        super(QuikRepliesMessage, self).__init__(recipient_id)
-        self._text = text
+class FileMessage(Message):
+    def __init__(self, type=None, payload_url=None):
+        self._type = type
+        self._payload_url = payload_url
 
     def to_dict(self):
-        message_data = super(QuikRepliesMessage, self).to_dict()
-        message_data['message']['text'] = self._text
+        message_data = super(FileMessage, self).to_dict()
+        message_data['attachment']['type'] = self._type
+        message_data['attachment']['type'] = self._type
         return message_data
 
     def from_dict(self, message_data):
-        super(QuikRepliesMessage, self).from_dict(message_data)
+        super(FileMessage, self).from_dict(message_data)
         if 'text' in message_data['message']:
             self._text = message_data['message']['text']
         return self
