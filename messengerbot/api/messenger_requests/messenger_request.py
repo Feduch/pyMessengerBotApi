@@ -1,6 +1,9 @@
+import logging
+
 
 class MessengerRequest:
     def __init__(self, event_type=None):
+        self._logger = logging.getLogger('messenger.bot.api')
         self._event_type = event_type
         self._sender_id = None
         self._recipient_id = None
