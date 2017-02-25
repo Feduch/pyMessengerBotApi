@@ -6,3 +6,4 @@ class EventType:
     UNSUBSCRIBED = 'unsubscribed'
     LOCATION = 'location'
     TEXT = 'text'
+    FILE = 'file'

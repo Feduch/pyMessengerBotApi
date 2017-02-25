@@ -18,11 +18,11 @@ class MessengerRequest:
 
     @property
     def sender(self):
-        return self._sender
+        return self._sender_id
 
     @property
     def recipient(self):
-        return self._recipient
+        return self._recipient_id
 
     def __repr__(self):
         from pprint import pformat

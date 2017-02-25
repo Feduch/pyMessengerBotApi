@@ -3,6 +3,7 @@ from messengerbot.api.messenger_requests.messenger_postback_request import Messe
 from messengerbot.api.messenger_requests.messenger_referral_request import MessengerReferralRequest
 from messengerbot.api.messenger_requests.messenger_quick_reply_request import MessengerQuickReplyRequest
 from messengerbot.api.messenger_requests.messenger_text_request import MessengerTextRequest
+from messengerbot.api.messenger_requests.messenger_file_request import MessengerFileRequest
 
 
 def create_request(request_dict):
@@ -26,7 +27,6 @@ def create_request(request_dict):
                             # TODO: Данные о своем местонахождении
                             pass
                         else:
-                            # TODO: Обработка файлов
-                            pass
+                            return MessengerFileRequest().from_dict(data)
                 else:
                     return MessengerTextRequest().from_dict(data)
