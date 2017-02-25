@@ -14,11 +14,19 @@ class ApiRequestSender:
 
     def post_request(self, endpoint, payload):
         try:
-            headers = requests.utils.default_headers()
-            headers.update({
-                'User-Agent': self._user_agent,
-            })
-            response = requests.post(self._messenger_bot_api_url + '/' + endpoint, data=payload, headers=headers)
+            params = {
+                "access_token": self._bot_configuration.auth_token
+            }
+            headers = {
+                "Content-Type": "application/json",
+                'User-Agent': self._user_agent
+            }
+            response = requests.post(
+                self._messenger_bot_api_url + '/' + endpoint,
+                params=params,
+                data=payload,
+                headers=headers
+            )
             response.raise_for_status()
             return json.loads(response.text)
         except RequestException as e:
@@ -27,7 +35,7 @@ class ApiRequestSender:
             raise e
         except Exception as ex:
             self._logger.error(u"unexpected Exception while trying to post request. error is: {0}"
-                                   .format(traceback.format_exc()))
+                               .format(traceback.format_exc()))
             raise ex
 
     def get_request(self, endpoint, params):
