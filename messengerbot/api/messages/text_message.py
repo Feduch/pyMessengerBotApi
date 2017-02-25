@@ -2,8 +2,7 @@ from messengerbot.api.messages.message import Message
 
 
 class TextMessage(Message):
-    def __init__(self, recipient_id, text=None):
-        super(TextMessage, self).__init__(recipient_id)
+    def __init__(self, text=None):
         self._text = text
 
     def to_dict(self):

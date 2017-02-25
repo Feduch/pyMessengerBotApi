@@ -2,8 +2,7 @@ from messengerbot.api.messages.message import Message
 
 
 class QuikRepliesMessage(Message):
-    def __init__(self, recipient_id, text=None):
-        super(QuikRepliesMessage, self).__init__(recipient_id)
+    def __init__(self, text=None):
         self._text = text
 
     def to_dict(self):
