@@ -47,10 +47,10 @@
         </entry>
       </file>
       <file leaf-file-name="api_request_sender.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pymessengerbotapi/api/api_request_sender.py">
+        <entry file="file://$PROJECT_DIR$/api/api_request_sender.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -128,7 +128,6 @@
         <option value="$PROJECT_DIR$/api/messenger_requests/messenger_file_request.py" />
         <option value="$PROJECT_DIR$/api/messenger_requests/messenger_request.py" />
         <option value="$PROJECT_DIR$/api/messages/file_message.py" />
-        <option value="$PROJECT_DIR$/api/api_request_sender.py" />
         <option value="$PROJECT_DIR$/api/bot_configuration.py" />
         <option value="$PROJECT_DIR$/api/messages/message.py" />
         <option value="$PROJECT_DIR$/api/message_sender.py" />
@@ -139,6 +138,7 @@
         <option value="$PROJECT_DIR$/api/api.py" />
         <option value="$PROJECT_DIR$/api/messages/template_message.py" />
         <option value="$PROJECT_DIR$/src/pymessengerbotapi/api/api_request_sender.py" />
+        <option value="$PROJECT_DIR$/api/api_request_sender.py" />
       </list>
     </option>
   </component>
@@ -866,14 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/api_request_sender.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="66" column="29" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/bot_configuration.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -890,6 +882,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pymessengerbotapi/api/api_request_sender.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/message_sender.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -900,10 +900,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pymessengerbotapi/api/api_request_sender.py">
+    <entry file="file://$PROJECT_DIR$/api/api_request_sender.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
           <folding />
         </state>
       </provider>

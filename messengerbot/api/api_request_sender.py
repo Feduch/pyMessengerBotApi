@@ -22,7 +22,7 @@ class ApiRequestSender:
                 'User-Agent': self._user_agent
             }
             response = requests.post(
-                self._messenger_bot_api_url + '/' + endpoint,
+                self._messenger_bot_api_url + endpoint,
                 params=params,
                 data=payload,
                 headers=headers
