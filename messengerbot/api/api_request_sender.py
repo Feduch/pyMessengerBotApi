@@ -53,7 +53,7 @@ class ApiRequestSender:
             'fields': 'first_name,last_name,profile_pic,locale,timezone,gender'
         }
         result = self.get_request(
-            endpoint=int(user_id),
+            endpoint=user_id,
             params=params)
 
         if 'error' in result:
