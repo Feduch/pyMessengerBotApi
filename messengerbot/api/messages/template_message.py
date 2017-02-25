@@ -28,10 +28,13 @@ class TemplateMessage(Message):
 
     def from_dict(self, message_data):
         super(TemplateMessage, self).from_dict(message_data)
-        if 'text' in message_data['attachment']['payload']:
-            self._text = message_data['attachment']['payload']['text']
-        if 'buttons' in message_data['attachment']['payload']['buttons']:
-            self._buttons = message_data['attachment']['payload']['buttons']
+        # if self._template_type == "button":
+        #     if 'text' in message_data['attachment']['payload']:
+        #         self._text = message_data['attachment']['payload']['text']
+        #     if 'buttons' in message_data['attachment']['payload']['buttons']:
+        #         self._buttons = message_data['attachment']['payload']['buttons']
+        # if self._template_type == "generic":
+
         return self
 
     def validate(self):
