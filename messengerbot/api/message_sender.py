@@ -25,4 +25,4 @@ class MessageSender:
         if 'error' in result:
             raise Exception(u"failed with status: {0}, message: {1}".format(result['status'], result['status_message']))
 
-        return result['message_token']
+        return result['message_id']
