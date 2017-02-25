@@ -7,9 +7,9 @@ class TemplateMessage(Message):
         self._buttons = buttons
         self._elements = elements
         self._type = type
-        self._template_type = 'generic'
+        self._template_type = 'button'
         if elements is None:
-            self._template_type = 'button'
+            self._template_type = 'generic'
 
     def to_dict(self):
         message_data = super(TemplateMessage, self).to_dict()
@@ -21,6 +21,7 @@ class TemplateMessage(Message):
             message_data['attachment']['payload']['text'] = self._text
             message_data['attachment']['payload']['buttons'] = self._buttons
         if self._template_type == "generic":
+            message_data['attachment']['payload']['elements'] = []
             message_data['attachment']['payload']['elements'] = self._elements
             message_data['attachment']['payload']['elements']['buttons'] = self._buttons
         return message_data
