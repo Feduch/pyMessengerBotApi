@@ -14,12 +14,8 @@ class MessageSender:
             self._logger.error(u"failed validating message: {0}".format(message))
             raise Exception("failed validating message: {0}".format(message))
 
-        payload = message.to_dict()
-        payload.update({
-            "receiver": recipient_id,
-            "message": message
-        })
-
+        payload = {"recipient":{"id": recipient_id},"message": message.to_dict()}
+        
         self._logger.debug(u"going to send message: {0}".format(payload))
         result = self._request_sender.post_request(
             BOT_API_ENDPOINT.SEND_MESSAGE,
