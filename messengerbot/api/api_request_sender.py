@@ -16,7 +16,7 @@ class ApiRequestSender:
         try:
             headers = requests.utils.default_headers()
             headers.update({
-                'User-Agent': self._user_agent
+                'User-Agent': self._user_agent,
             })
             response = requests.post(self._messenger_bot_api_url + '/' + endpoint, data=payload, headers=headers)
             response.raise_for_status()

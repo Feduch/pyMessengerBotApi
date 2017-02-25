@@ -16,21 +16,17 @@ class MessageSender:
 
         payload = message.to_dict()
         payload.update({
-            'access_token': self._bot_configuration.access_token,
-            "receiver": to,
-            "sender": {
-                "name": sender_name,
-                "avatar": sender_avatar
-            }
+            "receiver": recipient_id,
+            "message": message
         })
 
         self._logger.debug(u"going to send message: {0}".format(payload))
-        result = self._request_sender.post_request(BOT_API_ENDPOINT.SEND_MESSAGE, json.dumps(self.remove_empty_fields(payload)))
+        result = self._request_sender.post_request(
+            BOT_API_ENDPOINT.SEND_MESSAGE,
+            json.dumps(payload)
+        )
 
         if not result['status'] == 0:
             raise Exception(u"failed with status: {0}, message: {1}".format(result['status'], result['status_message']))
 
         return result['message_token']
-
-    def remove_empty_fields(self, message):
-        return {k: v for k, v in message.items() if v is not None}
