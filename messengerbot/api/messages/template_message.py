@@ -21,8 +21,8 @@ class TemplateMessage(Message):
             message_data['attachment']['payload']['text'] = self._text
             message_data['attachment']['payload']['buttons'] = self._buttons
         if self._template_type == "generic":
-            # message_data['attachment']['payload']['elements'] = self._elements
-            message_data['attachment']['payload']['elements']['buttons'] = self._buttons
+            message_data['attachment']['payload']['elements'] = self._elements
+            message_data['attachment']['payload']['elements'][0]['buttons'] = self._buttons
         return message_data
 
     def from_dict(self, message_data):
