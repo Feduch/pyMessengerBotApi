@@ -25,8 +25,8 @@
       <file leaf-file-name="template_message.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/messages/template_message.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="46" selection-start-line="30" selection-start-column="10" selection-end-line="35" selection-end-column="46" />
+            <state relative-caret-position="150">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -838,8 +838,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/messages/template_message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="46" selection-start-line="30" selection-start-column="10" selection-end-line="35" selection-end-column="46" />
+        <state relative-caret-position="150">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding />
         </state>
       </provider>

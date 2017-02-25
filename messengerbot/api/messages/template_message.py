@@ -2,13 +2,13 @@ from messengerbot.api.messages.message import Message
 
 
 class TemplateMessage(Message):
-    def __init__(self, type='template', text=None, buttons=None, elements=None):
+    def __init__(self, text=None, buttons=None, elements=None):
         self._text = text
         self._buttons = buttons
         self._elements = elements
-        self._type = type
+        self._type = 'template'
         self._template_type = 'button'
-        if elements is None:
+        if elements is not None:
             self._template_type = 'generic'
 
     def to_dict(self):
@@ -28,13 +28,6 @@ class TemplateMessage(Message):
 
     def from_dict(self, message_data):
         super(TemplateMessage, self).from_dict(message_data)
-        # if self._template_type == "button":
-        #     if 'text' in message_data['attachment']['payload']:
-        #         self._text = message_data['attachment']['payload']['text']
-        #     if 'buttons' in message_data['attachment']['payload']['buttons']:
-        #         self._buttons = message_data['attachment']['payload']['buttons']
-        # if self._template_type == "generic":
-
         return self
 
     def validate(self):
