@@ -2,18 +2,25 @@ from messengerbot.api.messages.message import Message
 
 
 class TemplateMessage(Message):
-    def __init__(self, type='template', template_type='generic', text=None, buttons=None):
+    def __init__(self, type='template', text=None, buttons=None, elements=None):
         self._text = text
         self._buttons = buttons
+        self._elements = elements
         self._type = type
-        self._template_type = template_type
+        self._template_type = 'generic'
+        if elements is None:
+            self._template_type = 'button'
 
     def to_dict(self):
         message_data = super(TemplateMessage, self).to_dict()
         message_data['attachment']['type'] = self._type
         message_data['attachment']['payload']['template_type'] = self._template_type
-        message_data['attachment']['payload']['text'] = self._text
-        message_data['attachment']['payload']['buttons'] = self._buttons
+        if self._template_type=="button":
+            message_data['attachment']['payload']['text'] = self._text
+            message_data['attachment']['payload']['buttons'] = self._buttons
+        if self._template_type == "generic":
+            message_data['attachment']['payload']['elements'] = self._elements
+            message_data['attachment']['payload']['elements']['buttons'] = self._buttons
         return message_data
 
     def from_dict(self, message_data):
