@@ -35,15 +35,14 @@ class Api:
 
     def send_message(self, recipient_id, message):
         """
-		:param recipient_id: Messenger user id
-		:param message_text: text
-		:return: list of tokens of the sent messages
-		"""
+        :param recipient_id: Messenger user id
+        :param message_text: text
+        :return: list of tokens of the sent messages
+        """
         self._logger.debug("going to send message text: {0}, recipient_id: {1}".format(message, recipient_id))
-        if not isinstance(message, str):
-            sent_messages_tokens = []
+        sent_messages_tokens = []
 
-            token = self._message_sender.send_message(recipient_id, message)
-            sent_messages_tokens.append(token)
+        token = self._message_sender.send_message(recipient_id, message)
+        sent_messages_tokens.append(token)
 
         return sent_messages_tokens
