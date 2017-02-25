@@ -8,16 +8,16 @@ class QuikRepliesMessage(Message):
 
     def to_dict(self):
         message_data = super(QuikRepliesMessage, self).to_dict()
-        message_data['message']['text'] = self._text
-        message_data['message']['quick_replies'] = self._quick_replies
+        message_data['text'] = self._text
+        message_data['quick_replies'] = self._quick_replies
         return message_data
 
     def from_dict(self, message_data):
         super(QuikRepliesMessage, self).from_dict(message_data)
-        if 'text' in message_data['message']:
-            self._text = message_data['message']['text']
-        if 'quick_replies' in message_data['message']:
-            self._quick_replies = message_data['message']['quick_replies']
+        if 'text' in message_data:
+            self._text = message_data['text']
+        if 'quick_replies' in message_data:
+            self._quick_replies = message_data['quick_replies']
         return self
 
     def validate(self):
