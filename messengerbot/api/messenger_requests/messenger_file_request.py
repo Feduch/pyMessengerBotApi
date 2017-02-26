@@ -17,6 +17,7 @@ class MessengerFileRequest(MessengerRequest):
         attachments = request_dict['message'].get('attachments')
         for attachment in attachments:
             self._payload = attachment['payload']
+            self._url = attachment['payload']['url']
             self._type = attachment['type']
         return self
 
