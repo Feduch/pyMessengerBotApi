@@ -18,8 +18,8 @@ class ApiRequestSender:
                 "access_token": self._bot_configuration.access_token
             }
             headers = {
-                "Content-Type": "application/json"
-                # "User-Agent": self._user_agent
+                "Content-Type": "application/json",
+                "User-Agent": self._user_agent
             }
             response = requests.post(
                 self._messenger_bot_api_url + endpoint,
@@ -27,10 +27,6 @@ class ApiRequestSender:
                 data=payload,
                 headers=headers
             )
-            print('params -------> %s' % params)
-            print('payload -------> %s' % payload)
-            print('headers -------> %s' % headers)
-            print('response -------> %s' % response)
             response.raise_for_status()
             return json.loads(response.text)
         except RequestException as e:
