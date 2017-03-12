@@ -27,7 +27,9 @@ class ApiRequestSender:
                 data=payload,
                 headers=headers
             )
+            print('response -------> %s' % response)
             response.raise_for_status()
+            print('response.raise_for_status -------> %s' % response)
             return json.loads(response.text)
         except RequestException as e:
             self._logger.error(u"failed to post request to endpoint={0}, with payload={1}. error is: {2}"
