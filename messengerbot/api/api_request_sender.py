@@ -19,7 +19,7 @@ class ApiRequestSender:
             }
             headers = {
                 "Content-Type": "application/json",
-                'User-Agent': self._user_agent
+                "User-Agent": self._user_agent
             }
             response = requests.post(
                 self._messenger_bot_api_url + endpoint,
