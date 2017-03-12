@@ -25,7 +25,7 @@ class MessengerFileRequest(MessengerRequest):
     def url(self):
         return self._url
 
-    @propertypp
+    @property
     def type(self):
         return self._type
 
