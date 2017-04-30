@@ -60,12 +60,14 @@ class ApiRequestSender:
             'access_token': self._bot_configuration.access_token,
             'fields': 'first_name,last_name,profile_pic,locale,timezone,gender'
         }
-        result = self.get_request(
-            endpoint=user_id,
-            params=params)
-
-        if 'error' in result:
-            raise Exception(u"failed with status: {0}, message: {1}"
-                            .format(result['error']['code'], result['error']['message']))
-
-        return result
+        try:
+            result = self.get_request(
+                endpoint=user_id,
+                params=params)
+        except Exception as ex:
+            # if 'error' in result:
+            #     raise Exception(u"failed with status: {0}, message: {1}"
+            #                     .format(result['error']['code'], result['error']['message']))
+            return None
+        else:
+            return result
