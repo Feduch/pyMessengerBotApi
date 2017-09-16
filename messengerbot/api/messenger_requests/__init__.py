@@ -8,25 +8,26 @@ from messengerbot.api.messenger_requests.messenger_file_request import Messenger
 
 def create_request(request_dict):
     for event in request_dict['entry']:
-        messaging = event['messaging']
-        for data in messaging:
-            if data.get('postback'):
-                if data['postback'].get('referral'):
-                    return MessengerStartRequest().from_dict(data)
-                else:
-                    return MessengerPostbackRequest().from_dict(data)
-            if data.get('referral'):
-                return MessengerReferralRequest().from_dict(data)
-            if data.get('message'):
-                if data['message'].get('quick_reply'):
-                    return MessengerQuickReplyRequest().from_dict(data)
-                elif data['message'].get('attachments'):
-                    attachments = data['message'].get('attachments')
-                    for attachment in attachments:
-                        if attachment['type']=='location':
-                            # TODO: Данные о своем местонахождении
-                            pass
-                        else:
-                            return MessengerFileRequest().from_dict(data)
-                else:
-                    return MessengerTextRequest().from_dict(data)
+        if event.get('messaging'):
+            messaging = event['messaging']
+            for data in messaging:
+                if data.get('postback'):
+                    if data['postback'].get('referral'):
+                        return MessengerStartRequest().from_dict(data)
+                    else:
+                        return MessengerPostbackRequest().from_dict(data)
+                if data.get('referral'):
+                    return MessengerReferralRequest().from_dict(data)
+                if data.get('message'):
+                    if data['message'].get('quick_reply'):
+                        return MessengerQuickReplyRequest().from_dict(data)
+                    elif data['message'].get('attachments'):
+                        attachments = data['message'].get('attachments')
+                        for attachment in attachments:
+                            if attachment['type']=='location':
+                                # TODO: Данные о своем местонахождении
+                                pass
+                            else:
+                                return MessengerFileRequest().from_dict(data)
+                    else:
+                        return MessengerTextRequest().from_dict(data)
