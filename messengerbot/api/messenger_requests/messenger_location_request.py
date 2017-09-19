@@ -10,9 +10,10 @@ class MessengerLocationRequest(MessengerRequest):
 
     def from_dict(self, request_dict):
         super(MessengerLocationRequest, self).from_dict(request_dict)
-        print('MessengerLocationRequest-----------> {0}'.format(request_dict))
-        self._lat = request_dict['lat']
-        self._long = request_dict['long']
+        attachments = request_dict['message'].get('attachments')
+        for attachment in attachments:
+            self._lat = attachment['payload']['coordinates']['lat']
+            self._long = attachment['payload']['coordinates']['long']
         return self
 
     @property
