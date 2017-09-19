@@ -4,6 +4,7 @@ from messengerbot.api.messenger_requests.messenger_referral_request import Messe
 from messengerbot.api.messenger_requests.messenger_quick_reply_request import MessengerQuickReplyRequest
 from messengerbot.api.messenger_requests.messenger_text_request import MessengerTextRequest
 from messengerbot.api.messenger_requests.messenger_file_request import MessengerFileRequest
+from messengerbot.api.messenger_requests.messenger_location_request import MessengerLocationRequest
 
 
 def create_request(request_dict):
@@ -25,8 +26,8 @@ def create_request(request_dict):
                         attachments = data['message'].get('attachments')
                         for attachment in attachments:
                             if attachment['type']=='location':
-                                # TODO: Данные о своем местонахождении
-                                pass
+                                # Данные о своем местонахождении
+                                return MessengerLocationRequest().from_dict(attachment['payload']['coordinates'])
                             else:
                                 return MessengerFileRequest().from_dict(data)
                     else:
