@@ -27,7 +27,7 @@ def create_request(request_dict):
                         for attachment in attachments:
                             if attachment['type']=='location':
                                 # Данные о своем местонахождении
-                                return MessengerLocationRequest().from_dict(attachment['payload']['coordinates'])
+                                return MessengerLocationRequest().from_dict(data)
                             else:
                                 return MessengerFileRequest().from_dict(data)
                     else:
