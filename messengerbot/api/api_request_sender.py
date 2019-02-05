@@ -41,7 +41,6 @@ class ApiRequestSender:
     def get_request(self, endpoint, params):
         try:
             response = requests.get(self._messenger_bot_api_url + '/' + endpoint, params=params)
-            response.raise_for_status()
             return json.loads(response.text)
         except RequestException as e:
             self._logger.error(u"failed to post request to endpoint={0}, with payload={1}. error is: {2}"
