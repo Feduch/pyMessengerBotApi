@@ -56,7 +56,8 @@ class ApiRequestSender:
 
         params = {
             'access_token': self._bot_configuration.access_token,
-            'fields': 'first_name,last_name,profile_pic,locale,timezone,gender'
+            # 'fields': 'first_name,last_name,profile_pic,locale,timezone,gender'
+            'fields': 'first_name,last_name,profile_pic'
         }
         try:
             result = self.get_request(
