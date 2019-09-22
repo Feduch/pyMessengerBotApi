@@ -14,7 +14,10 @@ class MessengerQuickReplyRequest(MessengerRequest):
         super(MessengerQuickReplyRequest, self).from_dict(request_dict)
         self._mid = request_dict['message']['mid']
         self._text = request_dict['message']['text']
-        self._seq = request_dict['message']['seq']
+        try:
+            self._seq = request_dict['message']['seq']
+        except Exception as e:
+            pass
         self._quick_reply = request_dict['message']['quick_reply']['payload']
         return self
 
