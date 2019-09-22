@@ -13,7 +13,7 @@ class MessengerTextRequest(MessengerRequest):
         super(MessengerTextRequest, self).from_dict(request_dict)
         self._mid = request_dict['message']['mid']
         self._text = request_dict['message']['text']
-        self._seq = request_dict['message']['seq']
+        # self._seq = request_dict['message']['seq']
         return self
 
     @property
