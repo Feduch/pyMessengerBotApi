@@ -23,6 +23,6 @@ class MessageSender:
         )
 
         if 'error' in result:
-            raise Exception(u"failed with status: {0}, message: {1}".format(result['status'], result['status_message']))
+            raise Exception(u"failed with status: {}, message: {1}".format(result))
 
         return result['message_id']
