@@ -13,7 +13,7 @@ class MessengerFileRequest(MessengerRequest):
     def from_dict(self, request_dict):
         super(MessengerFileRequest, self).from_dict(request_dict)
         self._mid = request_dict['message']['mid']
-        self._seq = request_dict['message']['seq']
+        # self._seq = request_dict['message']['seq']
         attachments = request_dict['message'].get('attachments')
         for attachment in attachments:
             self._payload = attachment['payload']
